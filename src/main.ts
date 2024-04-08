@@ -30,18 +30,12 @@ function main() {
     );
   }
 
+  const quote = getQuote();
+
   const lineClient = line({
     channelAccessToken: lineChannelAccessToken,
     apiOrigin: lineApiOrigin,
   });
 
-  lineClient.broadcast([
-    ...todaysSettings,
-    ...commonTextMessages,
-    // TODO スプシ読み取り
-    {
-      type: 'text',
-      text: '今日の名言\n"おまえを畑の土にしてやろうか"\n––the UK',
-    },
-  ]);
+  lineClient.broadcast([...todaysSettings, ...commonTextMessages, quote]);
 }
