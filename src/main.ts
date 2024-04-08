@@ -37,5 +37,7 @@ function main() {
     apiOrigin: lineApiOrigin,
   });
 
-  lineClient.broadcast([...todaysSettings, ...commonTextMessages, quote]);
+  lineClient.broadcast(
+    [...todaysSettings, ...commonTextMessages, quote].filter((e) => e),
+  );
 }
