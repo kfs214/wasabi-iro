@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["Kazuki", "STACKDRIVER", "USHIJIMA"]
+  "cSpell.words": ["Kazuki", "STACKDRIVER", "USHIJIMA"],
+  "eslint.experimental.useFlatConfig": true
 }
