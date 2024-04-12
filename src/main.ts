@@ -22,6 +22,14 @@ function main() {
     );
   }
 
+  const lineGroupId =
+    PropertiesService.getScriptProperties().getProperty('lineGroupId');
+  if (!lineGroupId) {
+    throw new Error(
+      'failed to get lineGroupId from ScriptProperties! ending process...',
+    );
+  }
+
   const lineApiOrigin =
     PropertiesService.getScriptProperties().getProperty('lineApiOrigin');
   if (!lineApiOrigin) {
@@ -37,7 +45,10 @@ function main() {
     apiOrigin: lineApiOrigin,
   });
 
-  lineClient.broadcast(
-    [...todaysSettings, ...commonTextMessages, quote].filter((e) => e),
-  );
+  lineClient.push({
+    to: lineGroupId,
+    messages: [quote, ...todaysSettings, ...commonTextMessages].filter(
+      (e) => e,
+    ),
+  });
 }

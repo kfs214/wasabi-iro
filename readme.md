@@ -62,3 +62,21 @@ clasp open
 ### more information
 
 For more information, visit [Use the command line interface with clasp](https://developers.google.com/apps-script/guides/clasp).
+
+## Environment Variables
+
+Before deploying this application on Google Apps Script (GAS), you'll need to set up the following environment variables. These variables are essential for the proper functioning of the application.
+
+### Required Variables:
+
+- `lineChannelAccessToken`: This is the access token for your LINE Messaging API. It allows your application to send messages to LINE users.
+- `lineGroupId`: This is the ID of the LINE group where your application will send messages. Ensure that your bot is in this group.
+  - see also: [developers.line.biz](https://developers.line.biz/en/docs/messaging-api/group-chats/#add-bot-group-room)
+  - see also: [kfs214/kame-nozoki](https://github.com/kfs214/kame-nozoki)
+- `lineApiOrigin`: This is the origin URL for the LINE Messaging API. It specifies the endpoint for sending messages and other API requests to LINE.
+  - example: `https://api.line.me`
+  - see more: [developers.line.biz](https://developers.line.biz/en/reference/messaging-api/#domain-name)
+
+### Setting Environment Variables in GAS:
+
+To set environment variables in Google Apps Script, follow these steps: [developers.google.com](https://developers.google.com/apps-script/guides/properties#manage_script_properties_manually)
