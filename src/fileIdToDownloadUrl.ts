@@ -3,7 +3,7 @@ function fileIdToDownloadUrl(fileId: string) {
   const downloadUrl = DriveApp.getFileById(fileId).getDownloadUrl();
   const redirectedUrl = fetchRedirectedUrl(downloadUrl, {
     followRedirects: false,
-  }).getHeaders()['Location'];
+  });
 
   if (typeof redirectedUrl !== 'string') return;
 
@@ -27,7 +27,9 @@ function fetchRedirectedUrl(
     try {
       const res = UrlFetchApp.fetch(url, params);
       const responseCode = res.getResponseCode();
-      if (responseCode >= 300 && responseCode < 400) return res;
+      if (responseCode >= 300 && responseCode < 400) {
+        return res.getHeaders()['Location'];
+      }
       if (responseCode === 500) throw new Error('500 Internal Server Error');
 
       Logger.log(
