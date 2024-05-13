@@ -8,30 +8,52 @@ const DaysOfWeek = {
   SATURDAY: 6,
 };
 
+const burnableFileId =
+  PropertiesService.getScriptProperties().getProperty('burnableFileId');
+const recyclableFileId =
+  PropertiesService.getScriptProperties().getProperty('recyclableFileId');
+if (!burnableFileId || !recyclableFileId) {
+  throw new Error(
+    'failed to get fileId from ScriptProperties! ending process...',
+  );
+}
+
+const burnableImageUrl = fileIdToDownloadUrl(burnableFileId);
+const recyclableImageUrl = fileIdToDownloadUrl(recyclableFileId);
+if (!burnableImageUrl || !recyclableImageUrl) {
+  throw new Error('failed to fetch imageUrl! ending process...');
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const notificationSettings = [
   {
     type: 'burnable',
     days: [DaysOfWeek.SUNDAY, DaysOfWeek.WEDNESDAY],
-    originalContentUrl:
-      'https://lh3.googleusercontent.com/drive-viewer/AKGpihbaSJ1evmWeUqkIOLWD8UtxPlsh8xOTK_137WKG3VR5komOgTqNHgGhbkynAGklXDfrt6znJ8ltFiY84uzq62c0gPyVHDFa7w=w2888-h1946-rw-v1',
-    previewImageUrl:
-      'https://lh3.googleusercontent.com/drive-viewer/AKGpihbaSJ1evmWeUqkIOLWD8UtxPlsh8xOTK_137WKG3VR5komOgTqNHgGhbkynAGklXDfrt6znJ8ltFiY84uzq62c0gPyVHDFa7w=w2888-h1946-rw-v1',
+    messages: [
+      {
+        type: 'image',
+        originalContentUrl: burnableImageUrl,
+        previewImageUrl: burnableImageUrl,
+      },
+    ] satisfies Message[],
   },
   {
     type: 'recyclable',
     days: [DaysOfWeek.MONDAY],
-    originalContentUrl:
-      'https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihbQ4cS-ENFUAjheEOO_klnydB_OavLtOF_SMgbcgVSI4OiHWmFqEYfMFub10AxmGRJ5HBC54TnC7Iv_SVtJN4gjijCmTNtvhas=w2888-h1946-v0',
-    previewImageUrl:
-      'https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihbQ4cS-ENFUAjheEOO_klnydB_OavLtOF_SMgbcgVSI4OiHWmFqEYfMFub10AxmGRJ5HBC54TnC7Iv_SVtJN4gjijCmTNtvhas=w2888-h1946-v0',
+    messages: [
+      {
+        type: 'image',
+        originalContentUrl: recyclableImageUrl,
+        previewImageUrl: recyclableImageUrl,
+      },
+    ] satisfies Message[],
   },
 ];
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const commonTextMessages = [
   {
-    type: 'text' as const,
+    type: 'text',
     text: '明日はごみの日です。\n※ごみ収集予定は祝日等の関係で変更になる場合があります。実際の交通規制に従って走行してください',
   },
-];
+] satisfies Message[];

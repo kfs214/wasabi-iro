@@ -48,7 +48,7 @@ function line({
         if (responseCode === 500) throw new Error('500 Internal Server Error');
 
         Logger.log(
-          `something went wrong. ending process... responseCode:${responseCode} response:${res.getContentText()}`,
+          `something went wrong. responseCode:${responseCode} response:${res.getContentText()}`,
         );
         break;
       } catch (error) {
