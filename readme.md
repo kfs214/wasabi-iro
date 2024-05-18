@@ -76,7 +76,26 @@ Before deploying this application on Google Apps Script (GAS), you'll need to se
 - `lineApiOrigin`: This is the origin URL for the LINE Messaging API. It specifies the endpoint for sending messages and other API requests to LINE.
   - example: `https://api.line.me`
   - see more: [developers.line.biz](https://developers.line.biz/en/reference/messaging-api/#domain-name)
+- `burnableFileId` & `recyclableFileId`: These are the File IDs of the image assets stored in Google Drive
+  - To obtain the File ID:
+    1. Navigate to the file in Google Drive.
+    2. Right-click on the file and select "Get link."
+    3. Ensure that you have set the sharing permissions to "Anyone with the link."
+    4. The link will look like this: https://drive.google.com/file/d/FILE_ID/view
+    5. Extract the FILE_ID portion from the link URL. This alphanumeric string between /d/ and /view is the File ID.
 
 ### Setting Environment Variables in GAS:
 
 To set environment variables in Google Apps Script, follow these steps: [developers.google.com](https://developers.google.com/apps-script/guides/properties#manage_script_properties_manually)
+
+## Creating a Trigger
+
+To manually create an installable trigger in the script editor, follow these steps:
+
+1. Open your Apps Script project. (`clasp open`)
+2. At the left, click `Triggers` ⏰ .
+3. At the bottom right, click `Add Trigger`.
+4. Select and configure the type of trigger you want to create.
+5. Click `Save`.
+
+For further details, refer to the [official documentation on managing triggers manually](https://developers.google.com/apps-script/guides/triggers/installable#manage_triggers_manually)
