@@ -67,22 +67,16 @@ For more information, visit [Use the command line interface with clasp](https://
 
 Before deploying this application on Google Apps Script (GAS), you'll need to set up the following environment variables. These variables are essential for the proper functioning of the application.
 
-### Required Variables:
+### Required Variables
 
+- `lineApiOrigin`: This is the origin URL for the LINE Messaging API. It specifies the endpoint for sending messages and other API requests to LINE.
+  - Example: `https://api.line.me`
+  - See more: [developers.line.biz](https://developers.line.biz/en/reference/messaging-api/#domain-name)
 - `lineChannelAccessToken`: This is the access token for your LINE Messaging API. It allows your application to send messages to LINE users.
 - `lineGroupId`: This is the ID of the LINE group where your application will send messages. Ensure that your bot is in this group.
-  - see also: [developers.line.biz](https://developers.line.biz/en/docs/messaging-api/group-chats/#add-bot-group-room)
-  - see also: [kfs214/kame-nozoki](https://github.com/kfs214/kame-nozoki)
-- `lineApiOrigin`: This is the origin URL for the LINE Messaging API. It specifies the endpoint for sending messages and other API requests to LINE.
-  - example: `https://api.line.me`
-  - see more: [developers.line.biz](https://developers.line.biz/en/reference/messaging-api/#domain-name)
-- `burnableFileId` & `recyclableFileId`: These are the File IDs of the image assets stored in Google Drive
-  - To obtain the File ID:
-    1. Navigate to the file in Google Drive.
-    2. Right-click on the file and select "Get link."
-    3. Ensure that you have set the sharing permissions to "Anyone with the link."
-    4. The link will look like this: https://drive.google.com/file/d/FILE_ID/view
-    5. Extract the FILE_ID portion from the link URL. This alphanumeric string between /d/ and /view is the File ID.
+  - See also: [developers.line.biz](https://developers.line.biz/en/docs/messaging-api/group-chats/#add-bot-group-room)
+  - See also: [kfs214/kame-nozoki](https://github.com/kfs214/kame-nozoki)
+- `burnableImageUrl` & `recyclableImageUrl`: These are the URLs of the image assets.
 
 ### Setting Environment Variables in GAS:
 

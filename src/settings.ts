@@ -8,20 +8,14 @@ const DaysOfWeek = {
   SATURDAY: 6,
 };
 
-const burnableFileId =
-  PropertiesService.getScriptProperties().getProperty('burnableFileId');
-const recyclableFileId =
-  PropertiesService.getScriptProperties().getProperty('recyclableFileId');
-if (!burnableFileId || !recyclableFileId) {
-  throw new Error(
-    'failed to get fileId from ScriptProperties! ending process...',
-  );
-}
-
-const burnableImageUrl = fileIdToDownloadUrl(burnableFileId);
-const recyclableImageUrl = fileIdToDownloadUrl(recyclableFileId);
+const burnableImageUrl =
+  PropertiesService.getScriptProperties().getProperty('burnableImageUrl');
+const recyclableImageUrl =
+  PropertiesService.getScriptProperties().getProperty('recyclableImageUrl');
 if (!burnableImageUrl || !recyclableImageUrl) {
-  throw new Error('failed to fetch imageUrl! ending process...');
+  throw new Error(
+    'failed to get imageUrl from ScriptProperties! ending process...',
+  );
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
