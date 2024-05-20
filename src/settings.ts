@@ -20,8 +20,8 @@ if (!burnableImageUrl || !recyclableImageUrl) {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const notificationSettings = [
+  // burnable
   {
-    type: 'burnable',
     days: [DaysOfWeek.SUNDAY, DaysOfWeek.WEDNESDAY],
     messages: [
       {
@@ -29,10 +29,10 @@ const notificationSettings = [
         originalContentUrl: burnableImageUrl,
         previewImageUrl: burnableImageUrl,
       },
-    ] satisfies Message[],
+    ],
   },
+  // recyclable
   {
-    type: 'recyclable',
     days: [DaysOfWeek.MONDAY],
     messages: [
       {
@@ -40,9 +40,12 @@ const notificationSettings = [
         originalContentUrl: recyclableImageUrl,
         previewImageUrl: recyclableImageUrl,
       },
-    ] satisfies Message[],
+    ],
   },
-];
+] satisfies {
+  days: number[];
+  messages: Message[];
+}[];
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const commonTextMessages = [

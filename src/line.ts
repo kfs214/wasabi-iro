@@ -42,6 +42,8 @@ function line({
       triedTimes++
     ) {
       try {
+        if (triedTimes > 0) Logger.log('retrying...');
+
         const res = UrlFetchApp.fetch(url, params);
         const responseCode = res.getResponseCode();
         if (responseCode === 200) break;
@@ -52,7 +54,7 @@ function line({
         );
         break;
       } catch (error) {
-        Logger.log(`fetching failed. retrying... ${error}`);
+        Logger.log(`fetching failed. ${error}`);
       }
 
       Utilities.sleep(retryOptions.intervalMs);
