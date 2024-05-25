@@ -2,11 +2,7 @@
 function main() {
   const todaysSettings = notificationSettings
     .filter((setting) => setting.days.includes(new Date().getDay()))
-    .map((setting) => ({
-      type: 'image' as const,
-      originalContentUrl: setting.originalContentUrl,
-      previewImageUrl: setting.previewImageUrl,
-    }));
+    .flatMap((setting) => setting.messages);
   if (todaysSettings.length === 0) {
     Logger.log('No notification settings found for today.');
     return;

@@ -7,4 +7,5 @@ export default [
   { languageOptions: { globals: globals.browser } },
   ...tseslint.configs.recommended,
   eslintConfigPrettier,
+  { rules: { curly: ['warn', 'multi-line'] } },
 ];

@@ -6,9 +6,8 @@ export default {
   ],
 
   // Lint JS files
-  '**/*.*js': (filenames) => `eslint --fix ${filenames.join(' ')}`,
+  '**/*.*js': 'eslint --fix',
 
   // Prettify TS, JS, Markdown and JSON files
-  '**/*.(ts|*js|json|md)': (filenames) =>
-    `prettier --write ${filenames.join(' ')}`,
+  '**/*.(ts|*js|json|md)': 'prettier --write',
 };
